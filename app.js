@@ -8,6 +8,11 @@ var apiRouter = require('./routes/book');
 
 var app = express();
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/CRUD-MEAN-App', { promiseLibrary: require('bluebird')})
+.then(()=> console.log('connection successfull'))
+.catch((err)=> console.error(err));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
